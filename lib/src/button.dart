@@ -6,7 +6,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 class Button extends StatefulWidget {
   const Button({
     Key? key,
-    this.icon,
+    required this.icon,
     this.iconSize,
     this.leading,
     this.iconActiveColor,
@@ -32,7 +32,7 @@ class Button extends StatefulWidget {
     this.textSize,
   }) : super(key: key);
 
-  final IconData? icon;
+  final Widget icon;
   final double? iconSize;
   final Text? text;
   final Widget? leading;
@@ -58,10 +58,10 @@ class Button extends StatefulWidget {
   final double? textSize;
 
   @override
-  _ButtonState createState() => _ButtonState();
+  ButtonState createState() => ButtonState();
 }
 
-class _ButtonState extends State<Button> with TickerProviderStateMixin {
+class ButtonState extends State<Button> with TickerProviderStateMixin {
   late bool _expanded;
   late final AnimationController expandController;
 
@@ -84,25 +84,24 @@ class _ButtonState extends State<Button> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    var curveValue = expandController
+    final curveValue = expandController
         .drive(CurveTween(
             curve: _expanded ? widget.curve! : widget.curve!.flipped))
         .value;
-    var _colorTween =
+    final colorTween =
         ColorTween(begin: widget.iconColor, end: widget.iconActiveColor);
-    var _colorTweenAnimation = _colorTween.animate(CurvedAnimation(
+    final colorTweenAnimation = colorTween.animate(CurvedAnimation(
         parent: expandController,
         curve: _expanded ? Curves.easeInExpo : Curves.easeOutCirc));
 
     _expanded = !widget.active!;
-    if (_expanded)
+    if (_expanded) {
       expandController.reverse();
-    else
+    } else {
       expandController.forward();
+    }
 
-    Widget icon = widget.leading ??
-        Icon(widget.icon,
-            color: _colorTweenAnimation.value, size: widget.iconSize);
+    final Widget icon = widget.leading ?? widget.icon;
 
     return Material(
       type: MaterialType.transparency,
@@ -195,7 +194,7 @@ class _ButtonState extends State<Button> with TickerProviderStateMixin {
                           child: Text(
                             widget.text!.data!,
                             style: TextStyle(
-                              color: _colorTweenAnimation.value,
+                              color: colorTweenAnimation.value,
                               fontSize: widget.textSize ?? 16,
                             ),
                           ),

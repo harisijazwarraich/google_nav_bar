@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'gbutton.dart';
 
-enum GnavStyle {
-  google,
-  oldSchool,
-}
+enum GnavStyle { google, oldSchool }
 
 class GNav extends StatefulWidget {
   const GNav({

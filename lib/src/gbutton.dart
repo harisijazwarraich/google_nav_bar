@@ -5,35 +5,6 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'button.dart';
 
 class GButton extends StatefulWidget {
-  final bool? active;
-  final bool? debug;
-  final bool? haptic;
-  final double? gap;
-  final Color? iconColor;
-  final Color? rippleColor;
-  final Color? hoverColor;
-  final Color? iconActiveColor;
-  final Color? textColor;
-  final EdgeInsetsGeometry? padding;
-  final EdgeInsetsGeometry? margin;
-  final TextStyle? textStyle;
-  final double? iconSize;
-  final Function? onPressed;
-  final String text;
-  final IconData icon;
-  final Color? backgroundColor;
-  final Duration? duration;
-  final Curve? curve;
-  final Gradient? backgroundGradient;
-  final Widget? leading;
-  final BorderRadius? borderRadius;
-  final Border? border;
-  final Border? activeBorder;
-  final List<BoxShadow>? shadow;
-  final String? semanticLabel;
-  final GnavStyle? style;
-  final double? textSize;
-
   const GButton({
     Key? key,
     this.active,
@@ -66,11 +37,40 @@ class GButton extends StatefulWidget {
     this.textSize,
   }) : super(key: key);
 
+  final bool? active;
+  final bool? debug;
+  final bool? haptic;
+  final double? gap;
+  final Color? iconColor;
+  final Color? rippleColor;
+  final Color? hoverColor;
+  final Color? iconActiveColor;
+  final Color? textColor;
+  final EdgeInsetsGeometry? padding;
+  final EdgeInsetsGeometry? margin;
+  final TextStyle? textStyle;
+  final double? iconSize;
+  final Function? onPressed;
+  final String text;
+  final Widget icon;
+  final Color? backgroundColor;
+  final Duration? duration;
+  final Curve? curve;
+  final Gradient? backgroundGradient;
+  final Widget? leading;
+  final BorderRadius? borderRadius;
+  final Border? border;
+  final Border? activeBorder;
+  final List<BoxShadow>? shadow;
+  final String? semanticLabel;
+  final GnavStyle? style;
+  final double? textSize;
+
   @override
-  _GButtonState createState() => _GButtonState();
+  GButtonState createState() => GButtonState();
 }
 
-class _GButtonState extends State<GButton> {
+class GButtonState extends State<GButton> {
   @override
   Widget build(BuildContext context) {
     return Semantics(
